@@ -1,9 +1,23 @@
 #include "tree.h"
-#include "graph.h"
+#include "matrix_graph.h"
+#include "list_graph.h"
+#include "avl_tree.h"
 #include <iostream>
 
+
+
 int main() {
-	Graph graph;
-	graph.print_matrix();
+	AVL_Tree test_tree;
+	for (int i = 10; i >= 1; --i) {
+		test_tree.insert(i);
+	}
+
+	std::vector<std::vector<AVL_node *>> depths = test_tree.get_levels();
+	for (auto depth : depths) {
+		for (auto node : depth) {
+			std::cout << node->data << " ";
+		}
+		std::cout << std::endl;
+	}
 	return 0;
 }
